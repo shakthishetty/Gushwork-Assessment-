@@ -1,0 +1,258 @@
+.specs-section {
+  padding: 60px 100px;
+  background-color: #1c1e25;
+  color: #fff;
+}
+
+.specs-wrapper {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.specs-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #fff; /* explicit */
+}
+
+.specs-subtitle {
+  font-size: 14px;
+  color: #ccc; /* light gray */
+  margin-bottom: 30px;
+}
+
+.specs-table {
+  background: #2a2d35;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.row {
+  display: flex;
+  border-top: 1px solid #3c3f48;
+}
+
+.row:first-child {
+  border-top: none;
+}
+
+.header {
+  background: #363a44;
+  font-weight: bold;
+  color: #fff; /* header text */
+}
+
+.col {
+  flex: 1;
+  padding: 14px 20px;
+  font-size: 14px;
+  color: #fff; /* add this */
+}
+
+.flag {
+  width: 16px;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+.download-wrapper {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.download-btn {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.download-btn .download-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+/* ===== MODAL STYLES ===== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: none; /* Start hidden */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: scale(0.7);
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-content {
+  transform: scale(1);
+}
+
+.modal-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+  font-weight: 600;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #666;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.2s ease;
+}
+
+.modal-close:hover {
+  background: #f5f5f5;
+  color: #333;
+}
+
+.modal-body {
+  padding: 24px;
+}
+
+.modal-body p {
+  margin: 0 0 20px 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.download-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.form-group input {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #2c3e94;
+  box-shadow: 0 0 0 3px rgba(44, 62, 148, 0.1);
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.btn-cancel {
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #666;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.btn-cancel:hover {
+  background: #f5f5f5;
+  border-color: #ccc;
+}
+
+.btn-download {
+  padding: 10px 20px;
+  border: none;
+  background: #2c3e94;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.btn-download:hover {
+  background: #1e2b6b;
+}
+
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .specs-section {
+    padding: 40px 24px;
+  }
+
+  .specs-title {
+    font-size: 22px;
+  }
+
+  .col {
+    font-size: 13px;
+    padding: 12px;
+  }
+
+  .download-btn {
+    font-size: 12px;
+    padding: 10px 16px;
+  }
+}

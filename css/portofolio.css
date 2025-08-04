@@ -1,0 +1,192 @@
+.ps-section {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f9f9f9;
+  padding: 60px 20px;
+}
+
+.ps-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ps-container h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.ps-subtext {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ps-card-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+  align-items: stretch;
+}
+
+.ps-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  width: 100%;
+  max-width: 340px;
+  text-align: left;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  transition: all 0.3s ease; /* Smooth transition for all properties */
+  cursor: pointer; /* Show pointer cursor on hover */
+}
+
+/* Hover effect for portfolio cards */
+.ps-card:hover {
+  transform: translateY(-8px); /* Lift card up on hover */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.ps-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.ps-card p {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.ps-card-bottom {
+  margin-top: auto;
+}
+
+/* Image container for proper zoom overflow handling */
+.ps-card-bottom {
+  overflow: hidden; /* Ensure zoomed image doesn't overflow the card */
+  border-radius: 8px; /* Match the image border radius */
+}
+
+.ps-card-bottom img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  transition: transform 0.3s ease; /* Smooth transition for image zoom */
+  display: block; /* Remove any inline spacing */
+}
+
+/* Image zoom effect on card hover */
+.ps-card:hover .ps-card-bottom img {
+  transform: scale(1.08); /* Zoom image on card hover */
+}
+
+.ps-learn-more {
+  display: block;
+  text-align: center;
+  background-color: #eef0ff;
+  color: #2f2f92;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid #d0d3ff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease; /* Enhanced transition for all properties */
+}
+
+.ps-learn-more:hover {
+  background-color: #dbe0ff;
+  transform: translateY(-2px); /* Slight lift on button hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12); /* Enhanced shadow on button hover */
+}
+
+/* Enhanced button effect when card is hovered */
+.ps-card:hover .ps-learn-more {
+  background-color: #2f2f92; /* Change to primary color on card hover */
+  color: white; /* White text on primary background */
+  border-color: #2f2f92; /* Match border color */
+}
+
+/* CTA Section */
+.ps-cta-box {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px 24px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.ps-cta-text {
+  text-align: left;
+  font-size: 14px;
+  color: #333;
+  flex: 1;
+  min-width: 200px;
+}
+
+.ps-highlight {
+  color: #2f2f92;
+  font-weight: 600;
+}
+
+.ps-cta-text p {
+  font-size: 13px;
+  color: #666;
+  margin-top: 6px;
+}
+
+.ps-cta-btn {
+  background: #2f2f92;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background 0.3s ease;
+}
+
+.ps-cta-btn:hover {
+  background: #1e1e70;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .ps-card-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ps-card {
+    max-width: 100%;
+  }
+
+  .ps-cta-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ps-cta-btn {
+    align-self: flex-end;
+  }
+}

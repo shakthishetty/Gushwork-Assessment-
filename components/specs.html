@@ -1,0 +1,76 @@
+<!-- components/specs.html -->
+<link rel="stylesheet" href="../css/specs.css" />
+
+<section class="specs-section">
+  <div class="specs-wrapper">
+    <h2 class="specs-title">Technical Specifications at a Glance</h2>
+    <p class="specs-subtitle">
+      Comprehensive performance data demonstrating our commitment to quality and engineering excellence.
+    </p>
+
+    <div class="specs-table">
+      <div class="row header">
+        <div class="col">Parameter</div>
+        <div class="col">Specification</div>
+      </div>
+
+      <div class="row"><div class="col">Pipe Diameter Range</div><div class="col">20mm to 1600mm (3/4” to 63”)</div></div>
+      <div class="row"><div class="col">Pressure Ratings</div><div class="col">PN 2.5, PN 4, PN 6, PN 8, PN 10, PN 12.5, PN 16</div></div>
+      <div class="row"><div class="col">Standard Dimension Ratio</div><div class="col">SDR 33, SDR 26, SDR 21, SDR 17, SDR 13.6, SDR 11</div></div>
+      <div class="row"><div class="col">Operating Temperature</div><div class="col">-40°C to +80°C (-40°F to +176°F)</div></div>
+      <div class="row"><div class="col">Service Life</div><div class="col">50+ Years (at 20 degrees C, PN 10)</div></div>
+      <div class="row"><div class="col">Material Density</div><div class="col">0.95 - 0.96 g/cm³</div></div>
+      <div class="row"><div class="col">Certification Standards</div><div class="col">IS 5984, ISO 4427, ASTM D3035</div></div>
+      <div class="row"><div class="col">Joint Type</div><div class="col">Butt Fusion, Electrofusion, Mechanical</div></div>
+      <div class="row"><div class="col">Coil Lengths</div><div class="col">Up to 500mm (for smaller diameters)</div></div>
+      <div class="row">
+        <div class="col">Country of Origin</div>
+        <div class="col">
+          <img src="../assets/images/flag.png" alt="India" class="flag" /> India
+        </div>
+      </div>
+    </div>
+
+    <div class="download-wrapper">
+      <button class="download-btn" id="downloadBtn">
+  <img src="../assets/images/DownloadSimple.png" alt="Download" class="download-icon" />
+  Download Full Technical Datasheet
+</button>
+
+    </div>
+  </div>
+
+  <!-- Download Modal -->
+  <div class="modal-overlay" id="downloadModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Let us email the entire catalogue to you</h3>
+        <button class="modal-close" id="modalClose">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Please provide your details to download the full technical datasheet:</p>
+        <form class="download-form" id="downloadForm">
+          <div class="form-group">
+            <label for="userName">Full Name </label>
+            <input type="text" id="userName" name="userName" required>
+          </div>
+          <div class="form-group">
+            <label for="userEmail">Email Address *</label>
+            <input type="email" id="userEmail" name="userEmail" required>
+          </div>
+         
+          <div class="form-group">
+            <label for="userPhone">Phone Number</label>
+            <input type="tel" id="userPhone" name="userPhone">
+          </div>
+          <div class="form-actions">
+
+            <button type="submit" class="btn-download">Download Brochure</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+

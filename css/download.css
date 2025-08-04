@@ -1,0 +1,92 @@
+.rd-section {
+  background-color: #f9f9f9;
+  font-family: "Segoe UI", sans-serif;
+  padding: 60px 20px;
+}
+
+.rd-container {
+  max-width: 1110px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+
+.rd-heading {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.rd-subtext {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+}
+
+/* Table-like wrapper */
+.rd-table {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+
+.rd-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #eee;
+  flex-wrap: wrap;
+}
+
+.rd-row:last-child {
+  border-bottom: none;
+}
+
+.rd-title {
+  font-size: 14px;
+  color: #222;
+  flex: 1;
+  min-width: 200px;
+  text-align: start;
+}
+
+
+
+.rd-download {
+  font-size: 14px;
+  color: #2f2f92;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.rd-icon {
+  width: 16px;
+  height: 16px;
+  margin-left: 6px;
+  vertical-align: middle;
+   
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+  .rd-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .rd-download {
+    align-self: flex-end;
+  }
+}
+
+
+
