@@ -18,9 +18,6 @@
     <!-- Footer placeholder -->
     <div id="footer-placeholder"></div>
 
-    <!-- Load initialization manager first -->
-    <script src="./js/init.js"></script>
-    
     <!-- Load main.js first, then other scripts -->
     <script src="./js/main.js"></script>
     <script src="./js/navbar.js"></script>
@@ -31,15 +28,167 @@
     <script src="./js/specs.js"></script>
     <script src="./js/features.js"></script>
     
-    <!-- Simple final initialization for Vercel -->
+    <!-- Direct inline initialization for Vercel -->
     <script>
-      window.addEventListener('load', function() {
-        console.log('Page fully loaded, running final init...');
-        setTimeout(function() {
-          if (window.initAll) {
-            window.initAll();
+      console.log('Starting direct inline initialization...');
+      
+      // Direct FAQ initialization
+      function initFAQDirect() {
+        console.log('Direct FAQ init starting...');
+        const faqItems = document.querySelectorAll('.faq-item');
+        console.log('FAQ items found:', faqItems.length);
+        
+        if (faqItems.length > 0) {
+          faqItems.forEach((item, index) => {
+            const question = item.querySelector('.faq-question');
+            if (question) {
+              question.onclick = function(e) {
+                e.preventDefault();
+                console.log('FAQ clicked:', index);
+                
+                // Close all others
+                faqItems.forEach(otherItem => {
+                  if (otherItem !== item) {
+                    otherItem.classList.remove('open');
+                  }
+                });
+                
+                // Toggle current
+                item.classList.toggle('open');
+              };
+            }
+          });
+          console.log('FAQ initialized successfully');
+        }
+      }
+      
+      // Direct Quote Modal initialization
+      function initQuoteModalDirect() {
+        console.log('Direct Quote Modal init starting...');
+        const quoteBtn = document.getElementById('quoteBtn');
+        const quoteModal = document.getElementById('quoteModal');
+        console.log('Quote elements:', { btn: !!quoteBtn, modal: !!quoteModal });
+        
+        if (quoteBtn && quoteModal) {
+          quoteBtn.onclick = function(e) {
+            e.preventDefault();
+            console.log('Quote button clicked directly!');
+            quoteModal.style.display = 'flex';
+            quoteModal.style.opacity = '1';
+            quoteModal.style.visibility = 'visible';
+            quoteModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          };
+          
+          // Close buttons
+          const closeBtn = quoteModal.querySelector('.modal-close');
+          const cancelBtn = quoteModal.querySelector('#quoteCancelBtn');
+          
+          if (closeBtn) {
+            closeBtn.onclick = function() {
+              quoteModal.style.display = 'none';
+              quoteModal.classList.remove('active');
+              document.body.style.overflow = '';
+            };
           }
-        }, 3000);
+          
+          if (cancelBtn) {
+            cancelBtn.onclick = function() {
+              quoteModal.style.display = 'none';
+              quoteModal.classList.remove('active');
+              document.body.style.overflow = '';
+            };
+          }
+          
+          // Click outside to close
+          quoteModal.onclick = function(e) {
+            if (e.target === quoteModal) {
+              quoteModal.style.display = 'none';
+              quoteModal.classList.remove('active');
+              document.body.style.overflow = '';
+            }
+          };
+          
+          console.log('Quote Modal initialized successfully');
+        }
+      }
+      
+      // Direct Download Modal initialization
+      function initDownloadModalDirect() {
+        console.log('Direct Download Modal init starting...');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const downloadModal = document.getElementById('downloadModal');
+        console.log('Download elements:', { btn: !!downloadBtn, modal: !!downloadModal });
+        
+        if (downloadBtn && downloadModal) {
+          downloadBtn.onclick = function(e) {
+            e.preventDefault();
+            console.log('Download button clicked directly!');
+            downloadModal.style.display = 'flex';
+            downloadModal.style.opacity = '1';
+            downloadModal.style.visibility = 'visible';
+            downloadModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          };
+          
+          // Close buttons
+          const closeBtn = downloadModal.querySelector('#modalClose');
+          const cancelBtn = downloadModal.querySelector('#cancelBtn');
+          
+          if (closeBtn) {
+            closeBtn.onclick = function() {
+              downloadModal.style.display = 'none';
+              downloadModal.classList.remove('active');
+              document.body.style.overflow = '';
+            };
+          }
+          
+          if (cancelBtn) {
+            cancelBtn.onclick = function() {
+              downloadModal.style.display = 'none';
+              downloadModal.classList.remove('active');
+              document.body.style.overflow = '';
+            };
+          }
+          
+          // Click outside to close
+          downloadModal.onclick = function(e) {
+            if (e.target === downloadModal) {
+              downloadModal.style.display = 'none';
+              downloadModal.classList.remove('active');
+              document.body.style.overflow = '';
+            }
+          };
+          
+          console.log('Download Modal initialized successfully');
+        }
+      }
+      
+      // Run initialization multiple times with different delays
+      function runAllInits() {
+        console.log('Running all direct initializations...');
+        initFAQDirect();
+        initQuoteModalDirect();
+        initDownloadModalDirect();
+      }
+      
+      // Multiple initialization attempts
+      setTimeout(runAllInits, 1000);
+      setTimeout(runAllInits, 3000);
+      setTimeout(runAllInits, 5000);
+      
+      // Also on page load
+      window.addEventListener('load', function() {
+        console.log('Page loaded, running inits...');
+        setTimeout(runAllInits, 1000);
+        setTimeout(runAllInits, 3000);
+      });
+      
+      // Also on DOM ready
+      document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM ready, running inits...');
+        setTimeout(runAllInits, 2000);
+        setTimeout(runAllInits, 4000);
       });
     </script>
   </body>
