@@ -18,14 +18,52 @@
     <!-- Footer placeholder -->
     <div id="footer-placeholder"></div>
 
+    <!-- Load initialization manager first -->
+    <script src="./js/init.js"></script>
+    
+    <!-- Load main.js first, then other scripts -->
+    <script src="./js/main.js"></script>
     <script src="./js/navbar.js"></script>
     <script src="./js/footer.js"></script>
-    <script src="./js/main.js"></script>
     <script src="./js/carousel.js"></script>
     <script src="./js/faq.js"></script>
     <script src="./js/testimonial.js"></script>
     <script src="./js/specs.js"></script>
     <script src="./js/features.js"></script>
+    
+    <!-- Ensure all initializations happen after everything is loaded -->
+    <script>
+      // Force re-initialization after all scripts are loaded
+      window.addEventListener('load', function() {
+        console.log('Page fully loaded, re-initializing all components...');
+        
+        // Re-initialize all components with delay for Vercel
+        setTimeout(function() {
+          // Re-initialize FAQ
+          if (window.initializeFAQ) {
+            console.log('Re-initializing FAQ...');
+            window.initializeFAQ();
+          }
+          
+          // Re-initialize modals
+          if (window.initQuoteModal) {
+            console.log('Re-initializing Quote Modal...');
+            window.initQuoteModal();
+          }
+          
+          if (window.initSpecsModal) {
+            console.log('Re-initializing Specs Modal...');
+            window.initSpecsModal();
+          }
+          
+          // Re-initialize testimonial slider
+          if (window.initTestimonialSlider) {
+            console.log('Re-initializing Testimonial Slider...');
+            window.initTestimonialSlider();
+          }
+        }, 1000); // Longer delay for Vercel
+      });
+    </script>
   </body>
 </html>
 

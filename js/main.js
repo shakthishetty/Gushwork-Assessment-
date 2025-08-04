@@ -17,8 +17,14 @@ document.addEventListener("DOMContentLoaded", () => {
       // Trigger specs initialization after the content is added
       if (window.initSpecsModal) {
         setTimeout(() => {
+          console.log('Calling initSpecsModal from main.js');
           window.initSpecsModal();
         }, 100);
+      }
+      
+      // Also queue for global init
+      if (window.queueInit) {
+        window.queueInit(() => window.initSpecsModal && window.initSpecsModal());
       }
       
       // After specs are loaded, load features
@@ -33,8 +39,14 @@ document.addEventListener("DOMContentLoaded", () => {
       // Trigger features initialization after the content is added
       if (window.initQuoteModal) {
         setTimeout(() => {
+          console.log('Calling initQuoteModal from main.js');
           window.initQuoteModal();
         }, 100);
+      }
+      
+      // Also queue for global init
+      if (window.queueInit) {
+        window.queueInit(() => window.initQuoteModal && window.initQuoteModal());
       }
       
       // After features are loaded, load FAQ section
@@ -49,8 +61,14 @@ document.addEventListener("DOMContentLoaded", () => {
       // Trigger FAQ initialization after the content is added
       if (window.initializeFAQ) {
         setTimeout(() => {
+          console.log('Calling initializeFAQ from main.js');
           window.initializeFAQ();
         }, 50);
+      }
+      
+      // Also queue for global init
+      if (window.queueInit) {
+        window.queueInit(() => window.initializeFAQ && window.initializeFAQ());
       }
       
       // After FAQ is loaded, load carousel section
@@ -108,6 +126,14 @@ document.addEventListener("DOMContentLoaded", () => {
       // Append quote section to main content (final section)
       document.querySelector("main").innerHTML += html;
       console.log("All sections loaded successfully!");
+      
+      // Final initialization call for Vercel
+      if (window.initializeComponents) {
+        setTimeout(() => {
+          console.log('Final component initialization call...');
+          window.initializeComponents();
+        }, 1000);
+      }
     })
     .catch(err => {
       console.error('Error loading components:', err);
