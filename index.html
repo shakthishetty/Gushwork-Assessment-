@@ -31,37 +31,15 @@
     <script src="./js/specs.js"></script>
     <script src="./js/features.js"></script>
     
-    <!-- Ensure all initializations happen after everything is loaded -->
+    <!-- Simple final initialization for Vercel -->
     <script>
-      // Force re-initialization after all scripts are loaded
       window.addEventListener('load', function() {
-        console.log('Page fully loaded, re-initializing all components...');
-        
-        // Re-initialize all components with delay for Vercel
+        console.log('Page fully loaded, running final init...');
         setTimeout(function() {
-          // Re-initialize FAQ
-          if (window.initializeFAQ) {
-            console.log('Re-initializing FAQ...');
-            window.initializeFAQ();
+          if (window.initAll) {
+            window.initAll();
           }
-          
-          // Re-initialize modals
-          if (window.initQuoteModal) {
-            console.log('Re-initializing Quote Modal...');
-            window.initQuoteModal();
-          }
-          
-          if (window.initSpecsModal) {
-            console.log('Re-initializing Specs Modal...');
-            window.initSpecsModal();
-          }
-          
-          // Re-initialize testimonial slider
-          if (window.initTestimonialSlider) {
-            console.log('Re-initializing Testimonial Slider...');
-            window.initTestimonialSlider();
-          }
-        }, 1000); // Longer delay for Vercel
+        }, 3000);
       });
     </script>
   </body>

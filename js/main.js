@@ -15,17 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("Specs section loaded, triggering initialization...");
       
       // Trigger specs initialization after the content is added
-      if (window.initSpecsModal) {
-        setTimeout(() => {
-          console.log('Calling initSpecsModal from main.js');
-          window.initSpecsModal();
-        }, 100);
-      }
-      
-      // Also queue for global init
-      if (window.queueInit) {
-        window.queueInit(() => window.initSpecsModal && window.initSpecsModal());
-      }
+      console.log("Specs section loaded");
       
       // After specs are loaded, load features
       return fetch('./components/features.html');
@@ -34,20 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(html => {
       // Append features section to main content
       document.querySelector("main").innerHTML += html;
-      console.log("Features section loaded, triggering initialization...");
-      
-      // Trigger features initialization after the content is added
-      if (window.initQuoteModal) {
-        setTimeout(() => {
-          console.log('Calling initQuoteModal from main.js');
-          window.initQuoteModal();
-        }, 100);
-      }
-      
-      // Also queue for global init
-      if (window.queueInit) {
-        window.queueInit(() => window.initQuoteModal && window.initQuoteModal());
-      }
+      console.log("Features section loaded");
       
       // After features are loaded, load FAQ section
       return fetch('./components/faqSection.html');
@@ -56,20 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(html => {
       // Append FAQ section to main content
       document.querySelector("main").innerHTML += html;
-      console.log("FAQ section loaded, triggering initialization...");
-      
-      // Trigger FAQ initialization after the content is added
-      if (window.initializeFAQ) {
-        setTimeout(() => {
-          console.log('Calling initializeFAQ from main.js');
-          window.initializeFAQ();
-        }, 50);
-      }
-      
-      // Also queue for global init
-      if (window.queueInit) {
-        window.queueInit(() => window.initializeFAQ && window.initializeFAQ());
-      }
+      console.log("FAQ section loaded");
       
       // After FAQ is loaded, load carousel section
       return fetch('./components/carousel-section.html');
@@ -128,11 +92,11 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("All sections loaded successfully!");
       
       // Final initialization call for Vercel
-      if (window.initializeComponents) {
+      if (window.initAll) {
         setTimeout(() => {
-          console.log('Final component initialization call...');
-          window.initializeComponents();
-        }, 1000);
+          console.log('Final simple initialization call...');
+          window.initAll();
+        }, 2000);
       }
     })
     .catch(err => {

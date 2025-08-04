@@ -1,129 +1,174 @@
-// Global initialization manager for Vercel deployment
+// Simple and reliable initialization for Vercel
 (function() {
   'use strict';
   
-  console.log('Initialization manager loaded');
+  console.log('Simple init manager loaded');
   
-  // Track which components have been initialized
-  const initialized = {
-    faq: false,
-    quoteModal: false,
-    specsModal: false,
-    testimonial: false
-  };
-  
-  // Queue of initialization functions to run
-  const initQueue = [];
-  
-  // Global initialization function
-  window.initializeComponents = function() {
-    console.log('Starting component initialization...');
+  // Simple initialization function
+  window.initAll = function() {
+    console.log('Starting simple initialization...');
     
-    // Run all queued initializations
-    initQueue.forEach(fn => {
-      try {
-        fn();
-      } catch (error) {
-        console.error('Initialization error:', error);
+    // Initialize FAQ
+    setTimeout(() => {
+      const faqItems = document.querySelectorAll('.faq-item');
+      console.log('FAQ items found:', faqItems.length);
+      
+      if (faqItems.length > 0) {
+        console.log('Initializing FAQ directly...');
+        
+        faqItems.forEach((item, index) => {
+          const question = item.querySelector('.faq-question');
+          if (question) {
+            // Remove existing listeners
+            const newQuestion = question.cloneNode(true);
+            question.parentNode.replaceChild(newQuestion, question);
+            
+            // Add new listener
+            newQuestion.addEventListener('click', function(e) {
+              e.preventDefault();
+              console.log('FAQ clicked:', index);
+              
+              // Close all others
+              faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                  otherItem.classList.remove('open');
+                }
+              });
+              
+              // Toggle current
+              item.classList.toggle('open');
+            });
+          }
+        });
       }
-    });
+    }, 500);
     
-    // Initialize specific components
-    initializeFAQSafe();
-    initializeModalsSafe();
-    initializeTestimonialSafe();
-  };
-  
-  // Safe FAQ initialization
-  function initializeFAQSafe() {
-    if (initialized.faq) return;
-    
-    const faqItems = document.querySelectorAll('.faq-item');
-    if (faqItems.length > 0 && window.initializeFAQ) {
-      console.log('Initializing FAQ safely...');
-      try {
-        window.initializeFAQ();
-        initialized.faq = true;
-      } catch (error) {
-        console.error('FAQ initialization error:', error);
-      }
-    } else {
-      console.log('FAQ not ready, retrying...');
-      setTimeout(initializeFAQSafe, 500);
-    }
-  }
-  
-  // Safe modal initialization
-  function initializeModalsSafe() {
-    // Quote Modal
-    if (!initialized.quoteModal) {
+    // Initialize Quote Modal
+    setTimeout(() => {
       const quoteBtn = document.getElementById('quoteBtn');
-      if (quoteBtn && window.initQuoteModal) {
-        console.log('Initializing Quote Modal safely...');
-        try {
-          window.initQuoteModal();
-          initialized.quoteModal = true;
-        } catch (error) {
-          console.error('Quote Modal initialization error:', error);
+      const quoteModal = document.getElementById('quoteModal');
+      console.log('Quote elements:', { btn: !!quoteBtn, modal: !!quoteModal });
+      
+      if (quoteBtn && quoteModal) {
+        console.log('Initializing Quote Modal directly...');
+        
+        // Remove existing listeners
+        const newBtn = quoteBtn.cloneNode(true);
+        quoteBtn.parentNode.replaceChild(newBtn, quoteBtn);
+        
+        // Add click listener
+        newBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          console.log('Quote button clicked!');
+          
+          quoteModal.style.display = 'flex';
+          quoteModal.style.opacity = '1';
+          quoteModal.style.visibility = 'visible';
+          quoteModal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        });
+        
+        // Close modal listeners
+        const closeBtn = quoteModal.querySelector('.modal-close');
+        const cancelBtn = quoteModal.querySelector('#quoteCancelBtn');
+        
+        if (closeBtn) {
+          closeBtn.addEventListener('click', function() {
+            quoteModal.style.display = 'none';
+            quoteModal.classList.remove('active');
+            document.body.style.overflow = '';
+          });
         }
-      } else {
-        setTimeout(() => initializeModalsSafe(), 500);
+        
+        if (cancelBtn) {
+          cancelBtn.addEventListener('click', function() {
+            quoteModal.style.display = 'none';
+            quoteModal.classList.remove('active');
+            document.body.style.overflow = '';
+          });
+        }
+        
+        // Click outside to close
+        quoteModal.addEventListener('click', function(e) {
+          if (e.target === quoteModal) {
+            quoteModal.style.display = 'none';
+            quoteModal.classList.remove('active');
+            document.body.style.overflow = '';
+          }
+        });
       }
-    }
+    }, 1000);
     
-    // Specs Modal
-    if (!initialized.specsModal) {
+    // Initialize Download Modal
+    setTimeout(() => {
       const downloadBtn = document.getElementById('downloadBtn');
-      if (downloadBtn && window.initSpecsModal) {
-        console.log('Initializing Specs Modal safely...');
-        try {
-          window.initSpecsModal();
-          initialized.specsModal = true;
-        } catch (error) {
-          console.error('Specs Modal initialization error:', error);
+      const downloadModal = document.getElementById('downloadModal');
+      console.log('Download elements:', { btn: !!downloadBtn, modal: !!downloadModal });
+      
+      if (downloadBtn && downloadModal) {
+        console.log('Initializing Download Modal directly...');
+        
+        // Remove existing listeners
+        const newBtn = downloadBtn.cloneNode(true);
+        downloadBtn.parentNode.replaceChild(newBtn, downloadBtn);
+        
+        // Add click listener
+        newBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          console.log('Download button clicked!');
+          
+          downloadModal.style.display = 'flex';
+          downloadModal.style.opacity = '1';
+          downloadModal.style.visibility = 'visible';
+          downloadModal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        });
+        
+        // Close modal listeners
+        const closeBtn = downloadModal.querySelector('#modalClose');
+        const cancelBtn = downloadModal.querySelector('#cancelBtn');
+        
+        if (closeBtn) {
+          closeBtn.addEventListener('click', function() {
+            downloadModal.style.display = 'none';
+            downloadModal.classList.remove('active');
+            document.body.style.overflow = '';
+          });
         }
-      } else {
-        setTimeout(() => initializeModalsSafe(), 500);
+        
+        if (cancelBtn) {
+          cancelBtn.addEventListener('click', function() {
+            downloadModal.style.display = 'none';
+            downloadModal.classList.remove('active');
+            document.body.style.overflow = '';
+          });
+        }
+        
+        // Click outside to close
+        downloadModal.addEventListener('click', function(e) {
+          if (e.target === downloadModal) {
+            downloadModal.style.display = 'none';
+            downloadModal.classList.remove('active');
+            document.body.style.overflow = '';
+          }
+        });
       }
-    }
-  }
-  
-  // Safe testimonial initialization
-  function initializeTestimonialSafe() {
-    if (initialized.testimonial) return;
-    
-    const testimonialSlider = document.querySelector('.testimonial-slider');
-    if (testimonialSlider && window.initTestimonialSlider) {
-      console.log('Initializing Testimonial safely...');
-      try {
-        window.initTestimonialSlider();
-        initialized.testimonial = true;
-      } catch (error) {
-        console.error('Testimonial initialization error:', error);
-      }
-    } else {
-      setTimeout(initializeTestimonialSafe, 500);
-    }
-  }
-  
-  // Add function to queue
-  window.queueInit = function(fn) {
-    initQueue.push(fn);
+    }, 1500);
   };
   
-  // Auto-initialize when everything is ready
+  // Run initialization multiple times
   document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(window.initializeComponents, 1000);
+    setTimeout(window.initAll, 2000);
   });
   
   window.addEventListener('load', function() {
-    setTimeout(window.initializeComponents, 2000);
+    setTimeout(window.initAll, 3000);
   });
   
-  // Final fallback initialization
+  // Final fallback
   setTimeout(function() {
     console.log('Final fallback initialization...');
-    window.initializeComponents();
+    window.initAll();
   }, 5000);
   
 })();
