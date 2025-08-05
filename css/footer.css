@@ -139,28 +139,28 @@
   }
 
   .footer-main {
-    text-align: center;
+    text-align: start;
   }
 
   .footer-bottom {
     flex-direction: column;
     align-items: center;
-    text-align: center;
+    text-align: start;
   }
 
   .footer-bottom .footer-links {
-    justify-content: center;
+    justify-content: start;
     flex-wrap: wrap;
   }
 
   .footer-socials {
-    justify-content: center;
+    justify-content: start;
   }
 
   .footer-column .contact-column{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
 
 }
