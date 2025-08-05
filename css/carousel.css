@@ -168,10 +168,21 @@
   .carousel {
     padding-left: 3vw;
     padding-right: 3vw;
+
   }
   
   .card {
     flex: 0 0 40vw; /* Larger cards on mobile */
+  }
+  .title{
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .subtitle1{
+    text-align: center;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
 }
 
